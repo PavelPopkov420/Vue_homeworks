@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+</head>
+
+<body>
+    <div id="app">
+        <button @click="sortInAscendingOrder">По возрастанию</button>
+        <button @click="sortInDescendingOrder">По убыванию</button>
+        <ul class="list">
+            <li class="list__item" v-for="item in products">Название: {{item.title}} цена: {{item.price}}</li>
+        </ul>
+    </div>
+
+    <script>
+        const app = {
+            data() {
+                return {
+                    products: [{
+                        id: '1',
+                        title: 'Audi',
+                        price: '2000000',
+
+                    }, {
+                        id: '2',
+                        title: 'BMW',
+                        price: '3200000',
+
+                    }, {
+                        id: '3',
+                        title: 'Lada',
+                        price: '1500000',
+
+                    }, {
+                        id: '4',
+                        title: 'Opel',
+                        price: '1800000',
+
+                    }, ]
+
+                }
+
+            },
+            methods: {
+                sortInAscendingOrder() {
+                    this.products.sort((a, b) => a.price - b.price);
+                },
+                sortInDescendingOrder() {
+                    this.products.sort((a, b) => b.price - a.price);
+                }
+            }
+        }
+        Vue.createApp(app).mount("#app");
+    </script>
+</body>
+
+</html>
